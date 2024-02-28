@@ -4,7 +4,7 @@ var patterns = [
     /.*\.ol\.epicgames\.com/
 ];
 
-var redirect = "http://mobile.astrofn.xyz";
+var redirect = "https://mobile.astrofn.xyz";
 
 function isMatch(url) {
     for (var i = 0; i < patterns.length; i++) {
@@ -17,7 +17,6 @@ function isMatch(url) {
 
 function main() {
     var curl_easy_setopt = Module.findExportByName("libUE4.so", "curl_easy_setopt");
-    var curl_easy_setopt_func = new NativeFunction(curl_easy_setopt, "int", ["pointer", "int", "pointer"]);
     Interceptor.attach(curl_easy_setopt, {
         onEnter: function (args) {
             var option = args[1].toInt32();
@@ -34,7 +33,7 @@ function main() {
             }
             // CURLOPT_SSL_VERIFYPEER ( for bypassing SSL pinning )
             else if (option == 64) {
-                curl_easy_setopt_func(args[0], 64, ptr(0));
+                args[2] = NULL;
             }
         }
     });
