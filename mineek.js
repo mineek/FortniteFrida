@@ -4,7 +4,7 @@ var patterns = [
     /.*\.ol\.epicgames\.com/
 ];
 
-var redirect = "https://mobile.astrofn.xyz";
+var redirect = "https://backend.ploosh.dev:2053";
 
 function isMatch(url) {
     for (var i = 0; i < patterns.length; i++) {
@@ -33,6 +33,10 @@ function main() {
             }
             // CURLOPT_SSL_VERIFYPEER ( for bypassing SSL pinning )
             else if (option == 64) {
+                args[2] = NULL;
+            }
+            // CURLOPT_SSL_VERIFYHOST ( for bypassing SSL pinning )
+            else if (option == 81) {
                 args[2] = NULL;
             }
         }
