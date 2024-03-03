@@ -4,7 +4,7 @@ var patterns = [
     /.*\.ol\.epicgames\.com/
 ];
 
-var redirect = "https://backend.ploosh.dev:2053";
+var redirect = "https://backend.ploosh.dev";
 
 function isMatch(url) {
     for (var i = 0; i < patterns.length; i++) {
