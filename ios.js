@@ -49,8 +49,6 @@ Interceptor.replace(ssl_get_psk_identity, new NativeCallback(function (ssl) {
     return "fortnite_is_love_fortnite_is_life";
 }, 'pointer', ['pointer']));
 
-console.log("Loaded SSL Bypass");
-
 var CFURLCreateWithString = Module.findExportByName("CFNetwork", "CFURLCreateWithString");
 Interceptor.attach(CFURLCreateWithString, {
     onEnter: function (args) {
